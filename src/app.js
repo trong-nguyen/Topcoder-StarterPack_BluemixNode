@@ -26,6 +26,12 @@ const apiRouter = new express.Router();
 
 loadRoutes(apiRouter, routes);
 
+var appRoot = require('app-root-path');
+// serve the files out of ./public as our main files
+app.use(express.static(appRoot + '/public'));
+
+console.log(__dirname);
+
 app.use('/api', apiRouter);
 
 app.use(errorHandler({
